@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>WhatsApp UI</title>
+
+<style>
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    /* =========================
+       BODY
+    ========================= */
+
+    body {
+        background: #d1d7db;
+        min-height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+        display: flex;
+
+        width: 90%;
+        height: 95vh;
+
+        background: white;
+
+        border-radius: 20px;
+
+        overflow: hidden;
+
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+        width: 30%;
+
+        border-right: 2px solid #ddd;
+
+        display: flex;
+        flex-direction: column;
+
+        background: white;
+    }
+
+
+    /* =========================
+       SIDEBAR HEADER
+    ========================= */
+
+    .header {
+        width: 100%;
+        min-height: 70px;
+
+        background: rgb(0, 54, 0);
+
+        color: white;
+
+        display: flex;
+        align-items: center;
+
+        padding: 10px 15px;
+    }
+
+
+    /* =========================
+       PROFILE IMAGE
+    ========================= */
+
+    .profile {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        margin-right: 15px;
+    }
+
+
+    /* =========================
+       THREE DOT MENU
+    ========================= */
+
+    .menu,
+    .chat-menu {
+        margin-left: auto;
+
+        position: relative;
+    }
+
+
+    .menu-btn {
+        background: transparent;
+
+        border: none;
+
+        color: white;
+
+        cursor: pointer;
+
+        font-size: 28px;
+
+        padding: 5px 10px;
+    }
+
+
+    /* =========================
+       DROPDOWN
+    ========================= */
+
+    .dropdown {
+        display: none;
+
+        position: absolute;
+
+        right: 0;
+        top: 40px;
+
+        background: white;
+
+        min-width: 180px;
+
+        border-radius: 8px;
+
+        box-shadow:
+            0 2px 10px rgba(0, 0, 0, 0.2);
+
+        z-index: 100;
+    }
+
+
+    /* Show dropdown */
+
+    .menu:hover .dropdown,
+    .chat-menu:hover .dropdown,
+    .filter-menu:hover .dropdown {
+        display: block;
+    }
+
+
+    /* Dropdown links */
+
+    .dropdown a {
+        display: block;
+
+        padding: 12px;
+
+        text-decoration: none;
+
+        color: black;
+    }
+
+
+    .dropdown a:hover {
+        background: #f0f2f5;
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search {
+        padding: 10px;
+
+        background: #f0f2f5;
+    }
+
+
+    .search input {
+        width: 100%;
+
+        padding: 12px 15px;
+
+        border: none;
+
+        outline: none;
+
+        border-radius: 20px;
+
+        background: white;
+    }
+
+
+    /* =========================
+       FILTER
+    ========================= */
+
+    .filter {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        padding: 10px;
+
+        background: white;
+    }
+
+
+    .filter-btn {
+        background: #000358;
+
+        color: white;
+
+        padding: 9px 12px;
+
+        border-radius: 20px;
+
+        cursor: pointer;
+
+        font-size: 13px;
+
+        border: none;
+    }
+
+
+    .filter-btn:hover {
+        background: #030bf5;
+    }
+
+
+    .filter-btn.active {
+        background: #075e54;
+    }
+
+
+    /* =========================
+       FILTER MENU
+    ========================= */
+
+    .filter-menu {
+        position: relative;
+    }
+
+
+    .filter-dropdown-btn {
+        width: 35px;
+        height: 35px;
+
+        border-radius: 50%;
+
+        background: #000358;
+
+        color: white;
+
+        border: none;
+
+        cursor: pointer;
+    }
+
+
+    .filter-dropdown {
+        left: 0;
+        right: auto;
+        top: 40px;
+    }
+
+
+    /* =========================
+       CHAT LIST
+    ========================= */
+
+    .chat-list {
+        overflow-y: auto;
+
+        flex: 1;
+    }
+
+
+    /* =========================
+       CHAT
+    ========================= */
+
+    .chat {
+        display: flex;
+
+        align-items: center;
+
+        padding: 12px 15px;
+
+        cursor: pointer;
+
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+
+    .chat:hover {
+        background: #f1f1f1;
+    }
+
+
+    /* Chat image */
+
+    .chat-img {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        margin-right: 15px;
+    }
+
+
+    /* Chat information */
+
+    .chat-info {
+        overflow: hidden;
+    }
+
+
+    .chat-info h4 {
+        margin-bottom: 5px;
+    }
+
+
+    .chat-info p {
+        color: #666;
+
+        font-size: 14px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    /* =========================
+       CHAT AREA
+    ========================= */
+
+    .chat-area {
+        width: 70%;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    /* =========================
+       CHAT HEADER
+    ========================= */
+
+    .chat-header {
+        height: 70px;
+
+        background: rgb(3, 70, 3);
+
+        color: white;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 10px 15px;
+    }
+
+
+    .chat-header .profile {
+        margin-right: 12px;
+    }
+
+
+    .contact-info h3 {
+        margin-bottom: 3px;
+    }
+
+
+    .contact-info p {
+        font-size: 12px;
+
+        color: #d8ffd8;
+    }
+
+
+    /* =========================
+       MESSAGES
+    ========================= */
+
+    .messages {
+        flex: 1;
+
+        background: #efeae2;
+
+        padding: 20px;
+
+        overflow-y: auto;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    /* =========================
+       RECEIVED MESSAGE
+    ========================= */
+
+    .received {
+        background: white;
+
+        padding: 10px 14px;
+
+        margin-bottom: 12px;
+
+        width: fit-content;
+
+        max-width: 70%;
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .received:hover {
+        background: #f4f5f8;
+    }
+
+
+    /* =========================
+       SENT MESSAGE
+    ========================= */
+
+    .sent {
+        background: #d9fdd3;
+
+        padding: 10px 14px;
+
+        margin-bottom: 12px;
+
+        margin-left: auto;
+
+        width: fit-content;
+
+        max-width: 70%;
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .sent:hover {
+        background: #c8f7c0;
+    }
+
+
+    /* =========================
+       INPUT AREA
+    ========================= */
+
+    .input-area {
+        display: flex;
+
+        padding: 10px;
+
+        background: #f0f2f5;
+    }
+
+
+    .input-area input {
+        flex: 1;
+
+        padding: 14px 18px;
+
+        border: none;
+
+        outline: none;
+
+        border-radius: 25px;
+
+        font-size: 15px;
+    }
+
+
+    .input-area button {
+        margin-left: 10px;
+
+        border: none;
+
+        padding: 12px 20px;
+
+        border-radius: 20px;
+
+        background: rgb(1, 1, 48);
+
+        color: white;
+
+        cursor: pointer;
+
+        font-size: 14px;
+    }
+
+
+    .input-area button:hover {
+        background: darkblue;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media screen and (max-width: 800px) {
+
+        .container {
+            width: 100%;
+
+            height: 100vh;
+
+            margin: 0;
+
+            border-radius: 0;
+        }
+
+
+        .sidebar {
+            width: 40%;
+        }
+
+
+        .chat-area {
+            width: 60%;
+        }
+
+
+        .filter {
+            flex-wrap: wrap;
+        }
+
+
+        .filter-btn {
+            padding: 7px 9px;
+
+            font-size: 12px;
+        }
+
+    }
+
+
+    @media screen and (max-width: 600px) {
+
+        .sidebar {
+            width: 100%;
+        }
+
+
+        .chat-area {
+            display: none;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
+
+<div class="container">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <div class="sidebar">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <img
+                src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg" 
+                class="profile"
+                alt="Profile"
+            >
+
+            <h3>Chats</h3>
+
+
+            <!-- THREE DOT MENU -->
+
+            <div class="menu">
+
+                <button class="menu-btn">
+                    ⋮
+                </button>
+
+
+                <div class="dropdown">
+
+                    <a href="#">
+                        New Group
+                    </a>
+
+                    <a href="#">
+                        Linked Devices
+                    </a>
+
+                    <a href="#">
+                        Starred Messages
+                    </a>
+
+                    <a href="#">
+                        Settings
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search your chats..."
+            >
+
+        </div>
+
+
+        <!-- FILTER -->
+
+        <div class="filter">
+
+            <button class="filter-btn active">
+                All
+            </button>
+
+
+            <button class="filter-btn">
+                Unread
+            </button>
+
+
+            <button class="filter-btn">
+                Groups
+            </button>
+
+
+            <!-- FILTER DROPDOWN -->
+
+            <div class="filter-menu">
+
+                <button class="filter-dropdown-btn">
+                    ▼
+                </button>
+
+
+                <div class="dropdown filter-dropdown">
+
+                    <a href="#">
+                        Favourites
+                    </a>
+
+                    <a href="#">
+                        Contacts
+                    </a>
+
+                    <a href="#">
+                        Non-Contacts
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHAT LIST -->
+
+        <div class="chat-list" id="chatList">
+
+
+            <!-- HONORE -->
+
+            <div class="chat">
+
+                <img
+                    src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg"
+                    class="chat-img"
+                    alt="Honore"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Honore</h4>
+
+                    <p>Hello!</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAMA KUNDWA -->
+
+            <div class="chat">
+
+                <img
+                    src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg"
+                    class="chat-img"
+                    alt="Mama Kundwa"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Mama Kundwa</h4>
+
+                    <p>See you tomorrow.</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAVID -->
+
+            <div class="chat">
+
+                <img
+                    src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg"
+                    class="chat-img"
+                    alt="David"
+                >
+
+                <div class="chat-info">
+
+                    <h4>David</h4>
+
+                    <p>See you tomorrow.</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAPA KUNDWA -->
+
+            <div class="chat">
+
+                <img
+                    src="https://via.placeholder.com/50"
+                    class="chat-img"
+                    alt="Papa Kundwa"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Papa Kundwa</h4>
+
+                    <p>Honore bimeze bite?</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- GEROME -->
+
+            <div class="chat">
+
+                <img
+                    src="https://via.placeholder.com/50"
+                    class="chat-img"
+                    alt="Gerome"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Gerome</h4>
+
+                    <p>Ejo tuzakora KBC.</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- HIRWA -->
+
+            <div class="chat">
+
+                <img
+                    src="https://via.placeholder.com/50"
+                    class="chat-img"
+                    alt="Hirwa"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Hirwa</h4>
+
+                    <p>We bimeze bite?</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUEEN -->
+
+            <div class="chat">
+
+                <img
+                    src="https://via.placeholder.com/50"
+                    class="chat-img"
+                    alt="Queen"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Queen</h4>
+
+                    <p>Ese usigaye uba hehe?</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STRATON -->
+
+            <div class="chat">
+
+                <img
+                    src="https://via.placeholder.com/50"
+                    class="chat-img"
+                    alt="Straton"
+                >
+
+                <div class="chat-info">
+
+                    <h4>Straton</h4>
+
+                    <p>Uravuga iza Deo?</p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CHAT AREA
+    ========================= -->
+
+    <div class="chat-area">
+
+
+        <!-- CHAT HEADER -->
+
+        <div class="chat-header">
+
+            <img
+                src="https://via.placeholder.com/50"
+                class="profile"
+                alt="Honore"
+            >
+
+
+            <div class="contact-info">
+
+                <h3>Honore</h3>
+
+                <p>online</p>
+
+            </div>
+
+
+            <!-- CHAT MENU -->
+
+            <div class="chat-menu">
+
+                <button class="menu-btn">
+                    ⋮
+                </button>
+
+
+                <div class="dropdown">
+
+                    <a href="#">
+                        Contact Info
+                    </a>
+
+                    <a href="#">
+                        Search
+                    </a>
+
+                    <a href="#">
+                        Clear Messages
+                    </a>
+
+                    <a href="#">
+                        Delete Chat
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MESSAGES
+        ========================= -->
+
+        <div class="messages" id="messages">
+
+
+            <div class="received">
+                Hello!
+            </div>
+
+
+            <div class="sent">
+                Hi! How are you?
+            </div>
+
+
+            <div class="received">
+                I am good!
+            </div>
+
+
+            <div class="sent">
+                Urataha sangahe?
+            </div>
+
+
+            <div class="received">
+                Mukanya saa 2:00.
+            </div>
+
+
+            <div class="sent">
+                Saw ubanguke.
+            </div>
+
+
+            <div class="received">
+                Oky.
+            </div>
+
+
+            <div class="sent">
+                Amakuru x?
+            </div>
+
+
+            <div class="received">
+                Ni meza.
+            </div>
+
+
+            <div class="sent">
+                Mwiriwe neza?
+            </div>
+
+
+            <div class="received">
+                Yego.
+            </div>
+
+
+            <div class="sent">
+                Hi!
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================
+             MESSAGE INPUT
+        ========================= -->
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type your message..."
+            >
+
+
+            <button id="sendButton">
+                Send
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    // =========================
+    // GET ELEMENTS
+    // =========================
+
+    const messageInput =
+        document.getElementById("messageInput");
+
+    const sendButton =
+        document.getElementById("sendButton");
+
+    const messages =
+        document.getElementById("messages");
+
+
+    // =========================
+    // SEND MESSAGE
+    // =========================
+
+    function sendMessage() {
+
+        const messageText =
+            messageInput.value.trim();
+
+
+        // Don't send empty message
+
+        if (messageText === "") {
+            return;
+        }
+
+
+        // Create new div
+
+        const newMessage =
+            document.createElement("div");
+
+
+        // Give it the sent class
+
+        newMessage.classList.add("sent");
+
+
+        // Put text inside
+
+        newMessage.textContent =
+            messageText;
+
+
+        // Add message to chat
+
+        messages.appendChild(newMessage);
+
+
+        // Clear input
+
+        messageInput.value = "";
+
+
+        // Scroll to bottom
+
+        messages.scrollTop =
+            messages.scrollHeight;
+
+    }
+
+
+    // =========================
+    // SEND BUTTON
+    // =========================
+
+    sendButton.addEventListener(
+        "click",
+        sendMessage
+    );
+
+
+    // =========================
+    // ENTER KEY
+    // =========================
+
+    messageInput.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+
+    // =========================
+    // SEARCH CHATS
+    // =========================
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const chatList =
+        document.getElementById("chatList");
+
+
+    searchInput.addEventListener(
+        "input",
+        function() {
+
+            const searchText =
+                searchInput.value.toLowerCase();
+
+
+            const chats =
+                chatList.querySelectorAll(".chat");
+
+
+            chats.forEach(
+                function(chat) {
+
+                    const name =
+                        chat.querySelector("h4")
+                        .textContent
+                        .toLowerCase();
+
+
+                    const message =
+                        chat.querySelector("p")
+                        .textContent
+                        .toLowerCase();
+
+
+                    if (
+                        name.includes(searchText) ||
+                        message.includes(searchText)
+                    ) {
+
+                        chat.style.display =
+                            "flex";
+
+                    }
+                    else {
+
+                        chat.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    // =========================
+    // FILTER BUTTONS
+    // =========================
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+
+    filterButtons.forEach(
+        function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    // Remove active
+                    // from all buttons
+
+                    filterButtons.forEach(
+                        function(btn) {
+
+                            btn.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    // Add active to
+                    // clicked button
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+</script>
+```
+
+</body>
+
+</html>

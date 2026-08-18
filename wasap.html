@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            
+    <meta charset="UTF-8">        
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">    
+    <title >WhatsApp UI</title>      
+    <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+       
+</head>    
+<body>    
+<style>*{
+         margin:0;
+         padding:0;
+        box-sizing:border-box;
+        font-family:arial,sans-serif;
+}
+body {
+    background:#ecf3ef;
+}
+.container {
+        display: flex;
+        width: 90%;
+        height: 95vh;
+        margin: 15px auto;
+        
+        border-radius: 20px;
+        
+ }
+
+
+.sidebar{
+      width: 30%;
+      border-right: 2px solid #010335; 
+      display: flex;
+      flex-direction: column;
+}
+.header{
+    width: 100%;
+    background: rgb(0, 54, 0);
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 40px;
+
+}
+.profile{
+     width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-right:15px;
+
+}
+.search{
+padding: 10px;
+background:#f0f2f5;
+
+}
+.search input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:20px;}
+.chat-list {
+     overflow-y:auto;
+}
+            
+.chat{
+    display:flex;
+    align-items:center;
+    padding:15px;
+    cursor:pointer;
+    border-bottom:1px solid #32d2ee;
+    border-left: 1px solid #32d2ee;
+}
+
+ .chat:hover{
+         background: rgb(216, 214, 214);
+         border-radius: 10px;
+}
+.chat-img{
+         width:50px;
+         height:50px;
+         border-radius:50%;
+         margin-right:15px;
+}
+            
+
+/* chat area */
+
+.chat-area{
+       width:70%;
+       display: flex;
+       flex-direction: column;
+
+}
+.chat-header{
+
+     height: 70px;
+     background: rgb(2, 148, 104);
+     color: white;
+     display: flex;
+     align-items: center;
+    padding: 15px;
+
+}
+.menu {
+    margin-left: auto;
+    position: relative;
+}
+.menu button{
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+}
+.dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    background:white;
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 2px  10px rgba(0,0,0, 2);
+}
+.dropdown a{
+    display:block;
+    padding:12px;
+    text-decoration:none;
+    color:black;
+}
+.dropdown a:hover{
+    background: #f0f2f5;
+}
+
+.menu:hover .dropdown{
+    display: block;
+}
+.chat-header img{
+border-radius: 50%;
+   margin-right: 15px;
+}
+
+.message {
+        flex: 1;
+        
+        padding: 10px;
+        overflow-y: auto;
+
+}
+.message--close{
+    position:absolute;
+    top: 1rem;
+}
+.received{
+        background: rgb(241, 187, 219);
+        padding: 14px;
+        margin-bottom: 15px;
+        width: fit-content;
+        border-radius: 10px;
+
+}
+.received:hover{
+    background: #f4f5f891;
+}
+.sent {
+     background:rgb(70, 194, 252); 
+     padding: 10px 15px;
+     margin-bottom: 15px;
+     margin-left: auto;
+     width: fit-content;
+     border-radius: 15px;
+
+
+}
+.sent:hover{
+    background:rgb(247, 195, 195);  ;
+}
+.input-area{
+         display: flex;
+         padding: 10px;
+         background:#f0f2f5;
+
+}
+.input-area input{
+         flex: 1;
+         padding: 15px;
+         border: none;
+         border-radius: 25px;
+}
+.input-area button{
+         margin-left: 12px;
+         border: none;
+         padding: 12px 10px;
+         border-radius: 20px;
+        background: rgb(1, 1, 48);
+        color: whitesmoke;
+        cursor: pointer;
+        border: none;
+}
+.input-area button:hover{
+    background: darkblue;
+
+}
+.filter{
+    
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    
+}
+.filter button{
+    background: #000358;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+.filter button.active{
+    background: #0a0131;
+    color: white;
+}
+.filter button:hover{
+    background: #030bf5;
+}
+filter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.filter-menu{
+    position: relative;
+}
+
+.filter-menu button{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #000358;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-menu .dropdown{
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: white;
+    min-width: 170px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+
+.filter-menu:hover .dropdown{
+    display: block;
+}
+    </style>
+        <div  class="container">
+             <!-- Sidebar -->
+            <div class="sidebar">
+
+                <div class="header">
+                  <img src="D:\downlard\WhatsApp Image 2026-02-16 at 10.32.35 PM.jpeg" class="profile">
+                      <h3>Chats</h3>
+                      <div class="menu">
+                <button class="menu-btn">
+                    <i class="ri-menu-line">
+
+                    </i></button>
+                
+                <div class="dropdown">
+                   <a href="#">New Groups</a>
+                   <a href="#">Linked devices</a>
+                    <a href="#">Starred messages</a>
+                    <a href="#">Settings</a>
+                </div>
+                </div>
+                      </div> 
+            <div class="search">
+            <input type="text" placeholder="search your number....">
+            </div>
+            <div class="filter">
+                
+              <a href="C:\Users\Ho-no-re\Pictures\all button.html" ><button class="active">All</button> </a>
+                <button>Unread</button>
+                 <button>Groups</button>
+                 <div class="filter-menu">
+                    <button>▼</button> 
+                 <div class="dropdown">
+                    <a href="#">favourties</a>
+                    <a href="#">Contacts</a>
+                    <a href="#">Non-Contacts </a>
+                 </div>
+                </div>
+      
+                
+            </div>
+
+            <div class="chat-list">
+
+                <div class="chat">
+                    <img src="D:\me (2024_09_26 13_38_14 UTC).jpeg" class="profile" >
+            <div>
+                    <h4>honore</h4>
+                    <p>hello!</p>
+                </div>
+                </div>
+            
+        <div class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.29.jpeg" class="profile">
+        <div>
+        <h4>Mama kundwa</h4>
+        <p>See you tomorrow.</p>
+    </div>
+</div>
+
+<div class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.21.jpeg" class="profile">
+<div>
+        <h4>David</h4>
+        <p>See you tomorrow.</p>
+    </div>
+</div>
+<div class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.10.jpeg" class="profile">
+    <div >
+        <h4>Papa kundwa</h4>
+        <p> honore bimez bitex ?</p>
+    </div>
+
+</div>
+<div class="chat">
+    <img src="https://via.placeholder.com/50" class="chat-img">
+    <div>
+        <h4>Gerome</h4>
+        <p> ejo tuzakora kbc </p>
+    </div>
+</div>
+<div class="chat">
+    <img src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg" class="profile">
+    <div>
+        <h4>Hirwa</h4>
+        <p>we bimez bitex</p>
+    </div>
+</div>
+<div  class="chat">
+    <img src="D:\amafoto\me\Screenshot 2025-04-02 124124.png" class="profile">
+    <div>
+        <h4>Queen</h4>
+        <p> ese usigaye ubahehe</p>
+    </div>
+</div>
+<div  class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.21 (1).jpeg" class="profile">
+    <div>
+        <h4>straton</h4>
+        <p> uravuga iza deo ?</p>
+    </div>
+</div>
+        
+            </div>
+            </div>
+        <!-- Chat Area -->
+        <div class="chat-area">
+
+            <div class="chat-header">
+
+              <img src="D:\me (2024_09_24 18_59_34 UTC).jpeg" class="profile">
+            <h3>honore</h3>
+            
+
+        </div>
+        <div class="message">
+
+            <div class="received">Hello!</div>
+           <div class="sent">hi! how are you?</div>
+            <div class="received">Iam good!</div>
+            <div class="sent">Urataha sangahe ?</div>
+            <div class="received"> mukanya saa 2:00</div>
+            <div class="sent"> saw ubanguke.</div>
+            <div class="received">oky</div>
+            <div class="sent" >amakuru x ?</div>
+            <div class="received">nimeza</div>
+            <div class="sent">mwiriwe neza ?</div>
+            <div class="received">yego</div>
+            <div class="sent"> hi</div>
+            <div class="hey ! hello!"></div>
+
+        </div>
+
+            <div class="input-area">
+                <input type="text" placeholder="Type your message...">
+
+                <button>Send</button>
+            </div>
+            
+
+           </div>
+        
+        </body>
+
+    </html>

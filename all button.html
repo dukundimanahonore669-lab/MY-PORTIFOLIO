@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<head>
+
+    
+ <meta charset="UTF-8">        
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">    
+    <title >WhatsApp UI</title>      
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+              font-family: Arial, Helvetica, sans-serif;
+        }
+  
+      body  {
+            background: linear-gradient(180deg, #0066cc 0%, #ffffff 100%);
+        }
+        .container{
+            display: flex;
+            width: 90%;
+            height: 95vh;
+            margin: 15px;
+            background: linear-gradient(180deg, #f7f8f8 0%);
+            border-radius: 20px;
+
+        }
+        .side-bar{
+            display: flex;
+            border-right: 1px solid rgb(0, 0, 37);
+           flex-direction: column;
+           width: 30%;
+
+        }
+        .header {
+            width: 100%;
+            background: rgb(0, 73, 0);
+            color: white;
+            align-items: center;
+            padding: 10px;
+            border-radius: 40px;
+            display: flex;
+        }
+        .profile{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 50%;
+
+        }
+        .search{
+            padding: 15px;
+            background: rgb(231, 230, 230);
+        }
+        .search input{
+            width: 100%;
+            border:none;
+            padding: 10px;
+            border-radius: 20px;
+        }
+        .chat-list {
+            overflow-y: auto;
+        }
+        .chat {
+        
+            border-bottom: 1px solid #f7fafd;
+            padding: 15px;
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+
+        }
+        .chat:hover{
+            background: darkgray;
+        }
+        .chat img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+
+        }
+        .chat-header{
+            
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: rgb(0, 73, 0);
+            color: white;
+        }
+        
+        .chat-area{
+            width: 70%;
+            flex-direction: column;
+            display: flex;
+
+        }
+.message{
+    flex: 1;
+    padding: auto;
+    background: linear-gradient(180deg, #0066cc 0%, #ffffff 100%);
+    overflow-y: auto;
+}
+.received{
+    background: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: fit-content;
+    border-radius: 10px;
+
+}
+.sent{
+    background: wheat;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    width: fit-content;
+    border-radius: 15px;
+}
+.input-area{
+    
+    display: flex;
+    padding: 10px;
+    background:rgb(219, 218, 218);
+}
+.input-area input{
+    width: 150%;
+    display: flex;
+    border-radius: 25px;
+    padding: 15px;
+    border:none;
+}
+.input-area button{
+    margin-left: 12px;
+    border:none;
+    padding: 10px 12px;
+    background: rgb(0, 0, 46);
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+
+}
+    </style>
+    <div class="container">
+        <div class="side-bar">
+            <div class="header">
+
+                <img src="D:\downlard\PXL_20251205_140756231.PORTRAIT~2.jpg" class="profile">
+
+                <h3>chats</h3>
+            
+            
+        </div>
+    
+    <div class="search">
+        <input type="text" placeholder="search your number...">
+        </div>
+    
+        <div class="chat-list">
+            <div class="chat">
+                <img src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg"  class="profile">
+              <div> <H3>mukama</H3>
+                <p>wiriwe utex ?</p>
+            </div> 
+        </div>
+<div class="chat-list">
+    <div class="chat">
+        <img src="D:\downlard\PXL_20251221_112743040.PORTRAIT.jpg" class="profile">
+       <div> <h3>ferdinand</h3>
+        <p> biracamo x mwn ?</p>
+    </div>
+</div>
+
+    <div class="chat">
+        <img src="D:\downlard\PXL_20260123_161914161.PORTRAIT~2.jpg" class="profile">
+      <div>  <h3>Shalom</h3>
+        <p>uracyari muri choir </p>
+    </div>
+</div>
+
+    <div class="chat">
+        <img src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg" class="profile">
+      <div> <h3>Irene</h3>
+       <p>bimeze bite wangu ?</p>
+    </div>
+</div>
+
+    <div class="chat">
+        <img src="D:\downlard\WhatsApp Image 2026-04-09 at 21.53.49.jpeg" class="profile">
+      <div>  <h3>honorine</h3>
+        <p>umeze neza ?</p>
+    
+    </div>
+</div>
+          
+
+                <div class="chat">
+                    <img src="D:\me (2024_09_26 13_38_14 UTC).jpeg" class="profile" >
+            <div>
+                    <h4>honore</h4>
+                    <p>hello!</p>
+                </div>
+                </div>
+            
+        <div class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.29.jpeg" class="profile">
+        <div>
+            <h4>Mama kundwa</h4>
+        <p>See you tomorrow.</p>
+    </div>
+        </div>
+
+<div class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.21.jpeg" class="profile">
+<div>
+        <h4>David</h4>
+        <p>See you tomorrow.</p>
+    </div>
+</div>
+<div class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.10.jpeg" class="profile">
+    <div >
+        <h4>Papa kundwa</h4>
+        <p> honore bimez bitex ?</p>
+    </div>
+
+</div>
+<div class="chat">
+    <img src="https://via.placeholder.com/50" class="chat-img">
+    <div>
+        <h4>Gerome</h4>
+        <p> ejo tuzakora kbc </p>
+    </div>
+</div>
+<div class="chat">
+    <img src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg" class="profile">
+    <div>
+        <h4>Hirwa</h4>
+        <p>we bimez bitex</p>
+    </div>
+</div>
+<div  class="chat">
+    <img src="D:\amafoto\me\Screenshot 2025-04-02 124124.png" class="profile">
+    <div>
+        <h4>Queen</h4>
+        <p> ese usigaye ubahehe</p>
+    </div>
+</div>
+<div  class="chat">
+    <img src="C:\Users\Ho-no-re\Downloads\WhatsApp Image 2026-08-02 at 13.14.21 (1).jpeg" class="profile">
+    <div>
+        <h4>straton</h4>
+        <p> uravuga iza deo ?</p>
+    </div>
+</div>
+</div>
+          </div>
+        </div>
+           
+    <div class="chat-area">
+        <div class="chat-header">
+            <img src="D:\downlard\WhatsApp Image 2026-02-15 at 9.25.03 PM.jpeg"  class="profile">
+            <h3>mukama</h3>
+        
+    </div>
+    <div class="message">
+        <div class="received">wiriwe utex?</div>
+        <div class="sent">Nineza ntarib</div>
+        <div class="received">aho acej bimez bitex?</div>
+        <div class="sent">sha bimez nez namaahoro</div>
+        <div class="received">ese ko utagisura abaragwa mwn koko</div>
+        <div class="sent">ndikubipanga nzaza</div>
+        <div class="received">woe bitegure mwn siko uzambwira</div>
+        <div class="sent">ntarib kbc</div>
+        <div class="received">muzataha ryariix </div>
+        <div class="sent">sha sinzi kbc</div>
+    </div>
+        <div class="input-area">
+            <input type="text" placeholder="type your message...">
+            <button>Send</button>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+<html

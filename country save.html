@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <style>
+
+
+form {
+    border-radius: 50px;
+    background-color: rgb(252, 248, 251);
+   background: linear-gradient(to right, green, darkblue);
+    padding: 20px;
+    width:50%;
+    
+}
+label{display: block;}
+
+input[type=text],select
+{
+    width:35%;
+    padding: 12px;
+    border: 10px;
+    margin: 8px;
+    display: inline-block;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input[type=submit]
+{
+    width:20%;
+    background-color:green;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+input[type=submit]:hover
+{
+ background-color:rgb(121, 190, 121);
+}
+    </style>
+    <body>
+
+<h2>Country inforamation form </h2>
+    <form action="/action_page.php">
+        <label for="fname">Country ID</label>
+
+        <input type="text"  id="fname" name="Country ID" placeholder="your Country ID....">
+
+        <label for="CountryName">CountryName</label>
+        <Select id="CountryName" >
+            <option value="Kenya">Kenya</option>
+            <option value="Congo DRC">Congo DRC</option>
+            <option value="Tanzania" >Tanzania</option>
+            <option value="American">American</option>
+            <option value="Burundi">Burundi</option>
+            <option value="Rwanda">Rwanda</option>
+            <option value="Uganda">Uganda</option>
+        
+        </Select>
+        <label for="Continent">Continent</label> <!-- ✅ Fixed --> 
+        <select id="Continent" name="Continent">
+        <option value="Africa" >Africa</option>
+        <option value="Asia" >Asia</option>
+        <option value="SouthAfrica">SouthAfrica</option>
+        </select>
+
+        <label for="Currency">Currency</label><!-- ✅ Fixed -->
+        <select id="Currency" name="Currency">
+        <option value="shillings">shillings</option>
+        <option value="pounds">pounds</option>
+        <option value="Rwandanfrancs">Rwandanfrancs</option>
+        </select>
+        <input type="submit" value="submit">
+        </form>
+        </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+        

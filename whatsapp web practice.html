@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#d1d7db;
+}
+
+.container{
+    display: flex;
+    width:95%;
+    height:95vh;
+    margin:15px auto;
+    background:#fff;
+    border-radius: 40px;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:30%;
+    border-right:2px solid #010214;
+    display:flex;
+    flex-direction:column;
+}
+.all {
+    height: 30%;
+    background: #008069;
+    color: white;
+    display: flex;
+    align-items: start;
+    padding: 8px;
+
+
+    
+}
+.header{
+    height:70px;
+    background:#008069;
+    color:white;
+    display:flex;
+    align-items:center;
+    padding:15px;
+    border-radius: 0px;
+}
+
+.profile{
+    border-radius:50%;
+    margin-right:15px;
+}
+
+.search{
+    padding:10px;
+    background:#f0f2f5;
+}
+
+.search input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:20px;
+}
+
+.chat-list{
+    overflow-y:auto;
+}
+
+.chat{
+    display:flex;
+    align-items:center;
+    padding:15px;
+    cursor:pointer;
+    border-bottom:1px solid #64a7f3;
+}
+
+.chat:hover{
+    background:#f5f5f5;
+}
+
+.chat img{
+    border-radius:50%;
+    margin-right:15px;
+}
+
+/* Chat Area */
+
+.chat-area{
+    width:70%;
+    display:flex;
+    flex-direction:column;
+}
+
+.chat-header{
+    height:70px;
+    background:#008069;
+    color:white;
+    display:flex;
+    align-items:center;
+    padding:15px;
+}
+
+.chat-header img{
+    border-radius:50%;
+    margin-right:15px;
+}
+
+.messages{
+    flex:1;
+    background:#efeae2;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.received{
+    background:white;
+    padding:10px 15px;
+    margin-bottom:15px;
+    width:fit-content;
+    border-radius:10px;
+}
+
+.sent{
+    background:#d9fdd3;
+    padding:10px 15px;
+    margin-bottom:15px;
+    margin-left:auto;
+    width:fit-content;
+    border-radius:10px;
+}
+
+.input-area{
+    display:flex;
+    padding:10px;
+    background:#f0f2f5;
+}
+
+.input-area input{
+    flex:1px;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+}
+
+.input-area button{
+    margin-left:10px;
+    padding:12px 20px;
+    border:none;
+    border-radius:25px;
+    background:#008069;
+    color:white;
+    cursor:pointer;
+    
+        
+    
+}</style>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="header">
+            <img src="WIN_20240929_19_14_14_Pro" class="profile">
+            <h3>Chats</h3>
+        </div>
+       
+
+        <div class="search">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="all">
+            <h4>all</h4>
+        </div>
+
+        <div class="chat-list">
+
+            <div class="chat">
+                <img src="https://via.placeholder.com/50">
+                <div>
+                    <h4>John</h4>
+                    <p>Hello!</p>
+                </div>
+            </div>
+
+            <div class="chat">
+                <img src="https://via.placeholder.com/50">
+                <div>
+                    <h4>Mary</h4>
+                    <p>How are you?</p>
+                </div>
+            </div>
+
+            <div class="chat">
+                <img src="https://via.placeholder.com/50">
+                <div>
+                    <h4>David</h4>
+                    <p>See you tomorrow.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area">
+
+        <div class="chat-header">
+            <img src="https://via.placeholder.com/45">
+            <h3>John</h3>
+        </div>
+
+        <div class="messages">
+
+            <div class="received">
+                Hello!
+            </div>
+
+            <div class="sent">
+                Hi, how are you?
+            </div>
+
+            <div class="received">
+                I'm fine.
+            </div>
+
+        </div>
+
+        <div class="input-area">
+            <input type="text" placeholder="Type a message">
+            <button>Send</button>
+        </div>
+
+    </div>
+
+</div>
+</style>
+</body>
+</html>
